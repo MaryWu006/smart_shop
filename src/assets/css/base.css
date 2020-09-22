@@ -1,0 +1,105 @@
+@import "./normalize.css";
+@import "./font-awesome.min.css";
+:root {
+  --color-text: #555;
+  --color-high-text: #0288d1;
+  --color-tint: #38b2f3;
+  --color-background: #f6f6f6;
+  --font-size: 14px;
+  --line-height: 1.5;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB",
+    "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  /* webkit是苹果浏览器引擎，tap点击，highlight背景高亮，color颜色，颜色用数值调节 */
+  background: var(--color-background);
+  color: var(--color-text);
+  /* rem vw/vh */
+  width: 100vw;
+}
+
+a {
+  color: var(--color-text);
+  text-decoration: none;
+}
+
+img {
+  display: block;
+  width: 100%;
+}
+
+input {
+  padding: 4px 10px;
+  font-size: 14px;
+  outline: none;
+}
+
+button {
+  outline: none;
+}
+
+.d-block {
+  display: block;
+}
+
+.d-flex {
+  display: flex;
+}
+
+.justify-content-center {
+  justify-content: center;
+}
+
+.justify-content-around {
+  justify-content: space-around;
+}
+
+.justify-content-between {
+  justify-content: space-between;
+}
+
+.align-items-center {
+  align-items: center;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+.ptb {
+  padding-top: 45px;
+  padding-bottom: 60px;
+}
+
+.icon-bell {
+  position: relative;
+  width: 30px;
+  font-size: 18px;
+}
+
+.icon-bell::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 3px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #f00;
+}
+
+.backBtn {
+  width: 20px;
+  font-size: 24px;
+}
