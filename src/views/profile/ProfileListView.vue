@@ -97,7 +97,7 @@
     margin-top: 10px;
     background: #fff;
     border-radius: 5px;
-    line-height: 32px;
+    line-height: 35px;
     font-size: 14px;
   }
 

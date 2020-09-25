@@ -1,6 +1,6 @@
 <template>
   <div class="iconsBox d-flex flex-wrap justify-content-around">
-    <a href="javascript:;">
+    <a href="javascript:;" @click="linkClick">
       <img src="@/assets/img/icon01.png">
       <span>休闲零食</span>
     </a>
@@ -38,6 +38,16 @@
 <script>
   export default {
     name: "HomeIcons",
+    data() {
+      return {
+        categoryId: 1
+      }
+    },
+    methods: {
+      linkClick() {
+        this.$router.push("/category/" + this.categoryId)
+      }
+    }
   };
 </script>
 

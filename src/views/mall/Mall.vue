@@ -1,5 +1,5 @@
 <template>
-  <div id="mall">
+  <div id="mall" class="ptb">
     <topbar class="mall-topbar">
       <template v-slot:center>
         <div class="center">积分商城</div>
@@ -10,16 +10,26 @@
         </div>
       </template>
     </topbar>
+
+    <mall-card/>
+    <mall-recommend/>
+    <mall-category/>
   </div>
 </template>
 
 <script>
   import Topbar from "@/components/common/Topbar"
+  import MallCard from "./MallCard"
+  import MallRecommend from "./MallRecommend"
+  import MallCategory from "./MallCategory"
 
   export default {
     name: "Mall",
     components: {
-      Topbar
+      Topbar,
+      MallCard,
+      MallRecommend,
+      MallCategory
     }
   }
 </script>

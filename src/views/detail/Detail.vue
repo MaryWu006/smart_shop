@@ -67,7 +67,7 @@
       DetailInfos,
       DetailImages,
       GoodsList,
-      DetailBottomBar
+      DetailBottomBar,
     },
     created() {
       this.productId = this.$route.params.productId

@@ -1,12 +1,12 @@
 <template>
   <div id="swiper">
-    <div class="swiper d-flex" @touchstart="touchStart" @touchmove="touchMove" @touchend="touchEnd">
+    <div ref="swiper" class="d-flex" @touchstart="touchStart" @touchmove="touchMove" @touchend="touchEnd">
       <slot></slot>
     </div>
     <slot name="indicator"></slot>
     <div class="indicator d-flex justify-content-center">
       <slot name="indicator" v-if="showIndicator && slideCount>1">
-        <div v-for="(item, index) in slideCount" class="indi-item" :class="{active: index === currentIndex-1}" :key="index"></div>
+        <div v-for="(item, index) in slideCount" :class="{active: index === currentIndex-1}" :key="index"></div>
       </slot>
     </div>
   </div>
@@ -117,8 +117,8 @@
        */
 		  handleDom: function () {
         // 1.获取要操作的元素
-        let swiperEl = document.querySelector('.swiper');
-        let slidesEls = swiperEl.getElementsByClassName('slide');
+        let swiperEl = this.$refs.swiper;
+        let slidesEls = this.$refs.swiper.children;
 
         // 2.保存个数
         this.slideCount = slidesEls.length;
@@ -220,7 +220,7 @@
     width: 100%;
   }
 
-  .indi-item {
+  .indicator>div {
     width: 8px;
     height: 8px;
     border-radius: 4px;
@@ -231,7 +231,7 @@
     margin: 0 3px;
   }
 
-  .indi-item.active {
+  .indicator>div.active {
     background: var(--color-tint);
   }
 </style>
