@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router";
 
+const Location = () => import("@/views/Location.vue");
 const Home = () => import("@/views/home/Home.vue");
 const Mall = () => import("@/views/mall/Mall.vue");
 const Cart = () => import("@/views/cart/Cart.vue");
@@ -10,7 +11,13 @@ const Category = () => import("@/views/category/Category.vue");
 const routes = [
   {
     path: "",
-    redirect: "/home",
+    redirect: "/location",
+  },
+  {
+    path: "/location",
+    name: "location",
+    component: Location,
+    meta: { title: "位置" }
   },
   {
     path: "/home",
@@ -43,7 +50,7 @@ const routes = [
     meta: { title: "详情页" }
   },
   {
-    path: "/category/:categoryId",
+    path: "/category",
     name: "category",
     component: Category,
     meta: { title: "商品列表" }

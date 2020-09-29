@@ -22,20 +22,37 @@
       <tab-menu class="menu"/>
       <tab-content class="content"/>
     </div>
+    <navbar/>
   </div>
 </template>
 
 <script>
   import Topbar from "@/components/common/Topbar"
+  import Navbar from "@/components/content/Navbar"
   import TabMenu from "./TabMenu"
   import TabContent from "./TabContent"
+
+  import { selectCatalog } from "@/network/request"
 
   export default {
     name: "Category",
     components: {
       Topbar,
+      Navbar,
       TabMenu,
       TabContent
+    },
+    data() {
+      return {
+        catalogList: "",
+        parentsId: ""
+      }
+    },
+    mounted() {
+      this.parentsId = this.$route.query.catalogId
+      selectCatalog({parentsId: this.parentsId}).then(res => {
+        console.log(res)
+      })
     },
     methods: {
       backClick() {

@@ -1,36 +1,13 @@
 <template>
   <div class="iconsBox d-flex flex-wrap justify-content-around">
-    <a href="javascript:;" @click="linkClick">
-      <img src="@/assets/img/icon01.png">
-      <span>休闲零食</span>
-    </a>
-    <a href="javascript:;">
-      <img src="@/assets/img/icon02.png">
-      <span>酒水饮料</span>
-    </a>
-    <a href="javascript:;">
-      <img src="@/assets/img/icon03.png">
-      <span>水果生鲜</span>
-    </a>
-    <a href="javascript:;">
-      <img src="@/assets/img/icon04.png">
-      <span>粮油副食</span>
-    </a>
-    <a href="javascript:;">
-      <img src="@/assets/img/icon05.png">
-      <span>生活用品</span>
-    </a>
-    <a href="javascript:;">
-      <img src="@/assets/img/icon06.png">
-      <span>家装家居</span>
-    </a>
-    <a href="javascript:;">
-      <img src="@/assets/img/icon07.png">
-      <span>个护清洁</span>
-    </a>
-    <a href="javascript:;">
-      <img src="@/assets/img/icon08.png">
-      <span>美妆护肤</span>
+    <a
+     href="javascript:;"
+     v-for="item in catalog"
+     :key="item.id"
+     @click="linkClick(item.catalogId)"
+    >
+      <img :src="item.icon">
+      <span>{{item.nodeName}}</span>
     </a>
   </div>
 </template>
@@ -38,14 +15,22 @@
 <script>
   export default {
     name: "HomeIcons",
-    data() {
-      return {
-        categoryId: 1
+    props: {
+      catalog: {
+        type: Array,
+        default() {
+          return []
+        }
       }
     },
     methods: {
-      linkClick() {
-        this.$router.push("/category/" + this.categoryId)
+      linkClick(catalogId) {
+        this.$router.push({
+          path: "/category",
+          query: {
+            catalogId
+          }
+        })
       }
     }
   };

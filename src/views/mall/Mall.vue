@@ -14,11 +14,13 @@
     <mall-card/>
     <mall-recommend/>
     <mall-category/>
+    <navbar/>
   </div>
 </template>
 
 <script>
   import Topbar from "@/components/common/Topbar"
+  import Navbar from "@/components/content/Navbar"
   import MallCard from "./MallCard"
   import MallRecommend from "./MallRecommend"
   import MallCategory from "./MallCategory"
@@ -27,6 +29,7 @@
     name: "Mall",
     components: {
       Topbar,
+      Navbar,
       MallCard,
       MallRecommend,
       MallCategory

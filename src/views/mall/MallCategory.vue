@@ -4,7 +4,8 @@
       <div 
         v-for="(item, index) in items"
         :key="index"
-        :class="index === currentIndex ? 'title current' : 'title'"
+        class="title"
+        :class="{ current: currentIndex === index }"
         @click="itemClick(index)"
       >
         {{item}}

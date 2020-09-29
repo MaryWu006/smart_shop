@@ -2,7 +2,10 @@
   <div id="home" class="ptb">
     <topbar class="home-topbar">
       <template v-slot:left>
-        <div class="left"><i class="fa fa-map-marker"></i> 深圳技师学院</div>
+        <div class="left" @click="location">
+          <i class="fa fa-map-marker"></i>
+          {{getStoreName}}
+        </div>
       </template>
       <template v-slot:center>
         <div class="center">
@@ -17,25 +20,30 @@
     </topbar>
 
     <home-swiper/>
-    <home-icons/>
+    <home-icons :catalog="catalog"/>
     <home-activity/>
     <tab-control class="tabControl" @tab-click="tabClick"/>
     <goods-list :goods="goods[currentType].list"/>
+    <navbar/>
   </div>
 </template>
 
 <script>
   import Topbar from "@/components/common/Topbar"
+  import Navbar from "@/components/content/Navbar"
   import HomeSwiper from "./HomeSwiper"
   import HomeIcons from "./HomeIcons"
   import HomeActivity from "./HomeActivity"
   import TabControl from "@/components/content/TabControl"
   import GoodsList from "@/components/content/goods/GoodsList"
 
+  import { selectCatalogParent } from "@/network/request"
+
   export default {
     name: "Home",
     components: {
       Topbar,
+      Navbar,
       HomeSwiper,
       HomeIcons,
       HomeActivity,
@@ -44,6 +52,7 @@
     },
     data() {
       return {
+        catalog: [],
         goods: {
           'recommend': {page: 0, list: [
             {
@@ -97,7 +106,17 @@
         currentType: "recommend"
       }
     },
+    created() {
+      selectCatalogParent({
+        storeId: this.getStoreId
+      }).then(res => {
+        this.catalog = res.data.list.splice(0, 8)
+      })
+    },
     methods: {
+      location() {
+        this.$router.push("/location")
+      },
       tabClick(index) {
         switch(index) {
           case 0:
@@ -110,6 +129,14 @@
             this.currentType = "special"
             break
         }
+      }
+    },
+    computed: {
+      getStoreName() {
+        return this.$store.state.selectedStore.storeName
+      },
+      getStoreId() {
+        return this.$store.state.selectedStore.storeId
       }
     }
   }

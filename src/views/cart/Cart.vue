@@ -11,11 +11,13 @@
 
     <cart-list/>
     <cart-bottom-bar/>
+    <navbar/>
   </div>
 </template>
 
 <script>
   import Topbar from "@/components/common/Topbar"
+  import Navbar from "@/components/content/Navbar"
   import CartList from "./CartList"
   import CartBottomBar from "./CartBottomBar"
 
@@ -23,6 +25,7 @@
     name: "Cart",
     components: {
       Topbar,
+      Navbar,
       CartList,
       CartBottomBar
     },
